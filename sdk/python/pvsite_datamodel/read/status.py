@@ -1,10 +1,8 @@
 """Functions to read from the Status table."""
 
-from typing import Optional
-
-from sqlalchemy.orm import Session
-
 from pvsite_datamodel.sqlmodels import StatusSQL
+from sqlalchemy.orm import Session
+from typing import Optional
 
 
 def get_latest_status(session: Session) -> Optional[StatusSQL]:
