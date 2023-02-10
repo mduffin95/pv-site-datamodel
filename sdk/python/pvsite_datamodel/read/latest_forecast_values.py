@@ -2,15 +2,15 @@
 
 import datetime as dt
 import uuid
-from typing import Dict, List, Optional, Union
+from typing import Dict, List, Optional
 
 from sqlalchemy.orm import Query, Session, contains_eager
 
 from pvsite_datamodel.sqlmodels import (
     DatetimeIntervalSQL,
+    ForecastSQL,
     ForecastValueSQL,
     LatestForecastValueSQL,
-    ForecastSQL,
 )
 
 
@@ -68,7 +68,7 @@ def get_forecast_values_by_site_latest(
     site_uuids: List[uuid.UUID],
     start_utc: Optional[dt.datetime] = None,
 ) -> Dict[uuid.UUID, List[ForecastValueSQL]]:
-    """Get the forecast values by input sites, get the lastest value
+    """Get the forecast values by input sites, get the lastest value.
 
     This reads the ForecastValueSQL table
 
