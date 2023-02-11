@@ -6,9 +6,12 @@ from typing import Dict, List, Optional
 
 from sqlalchemy.orm import Query, Session, contains_eager
 
-from pvsite_datamodel.sqlmodels import (DatetimeIntervalSQL, ForecastSQL,
-                                        ForecastValueSQL,
-                                        LatestForecastValueSQL)
+from pvsite_datamodel.sqlmodels import (
+    DatetimeIntervalSQL,
+    ForecastSQL,
+    ForecastValueSQL,
+    LatestForecastValueSQL,
+)
 
 
 def get_latest_forecast_values_by_site(

@@ -11,8 +11,7 @@ import sqlalchemy.orm as sa_orm
 
 from pvsite_datamodel.read.site import get_site_by_uuid
 from pvsite_datamodel.sqlmodels import ForecastSQL, ForecastValueSQL
-from pvsite_datamodel.write.datetime_intervals import \
-    get_or_else_create_datetime_interval
+from pvsite_datamodel.write.datetime_intervals import get_or_else_create_datetime_interval
 from pvsite_datamodel.write.utils import UUIDV4, WrittenRow
 
 

@@ -9,8 +9,7 @@ from typing import List
 
 import sqlalchemy as sa
 from sqlalchemy import Column, DateTime
-from sqlalchemy.dialects.postgresql import (FLOAT, INTEGER, REAL, TIMESTAMP,
-                                            UUID)
+from sqlalchemy.dialects.postgresql import FLOAT, INTEGER, REAL, TIMESTAMP, UUID
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy.schema import UniqueConstraint
