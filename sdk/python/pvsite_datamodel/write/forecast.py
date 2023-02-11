@@ -8,7 +8,6 @@ import numpy.typing as npt
 import pandas as pd
 import pandera as pa
 import sqlalchemy.orm as sa_orm
-
 from pvsite_datamodel.read.site import get_site_by_uuid
 from pvsite_datamodel.sqlmodels import ForecastSQL, ForecastValueSQL
 from pvsite_datamodel.write.datetime_intervals import get_or_else_create_datetime_interval
@@ -20,16 +19,15 @@ class ForecastValuesSchema(pa.SchemaModel):
 
     target_start_utc: pa.typing.Series[pd.DatetimeTZDtype] = pa.Field(
         dtype_kwargs={"unit": "ns", "tz": "UTC"},
-        description="The start of the target time period for the forecast value."
+        description="The start of the target time period for the forecast value.",
     )
 
     target_end_utc: pa.typing.Series[pd.DatetimeTZDtype] = pa.Field(
         dtype_kwargs={"unit": "ns", "tz": "UTC"},
-        description="The end of the target time period for the forecast value."
+        description="The end of the target time period for the forecast value.",
     )
     forecast_kw: pa.typing.Series[pa.dtypes.Float] = pa.Field(
-        ge=0,
-        description="The forecast generation for the site in kilowatts."
+        ge=0, description="The forecast generation for the site in kilowatts."
     )
     site_uuid: pa.typing.Series[UUIDV4] = pa.Field(
         description="The UUID of the site for which the forecast value was created."
@@ -37,8 +35,9 @@ class ForecastValuesSchema(pa.SchemaModel):
 
 
 def insert_forecast_values(
-        session: sa_orm.Session, forecast_values_df: pa.typing.DataFrame[ForecastValuesSchema],
-        forecast_version: str = "0.0.0"
+    session: sa_orm.Session,
+    forecast_values_df: pa.typing.DataFrame[ForecastValuesSchema],
+    forecast_version: str = "0.0.0",
 ) -> list[WrittenRow]:
     """Insert a dataframe of forecast values into the database.
 
@@ -56,7 +55,6 @@ def insert_forecast_values(
     # Loop over all the unique sites that have got forecast values
     sites: npt.ndarray[uuid.UUID] = forecast_values_df["site_uuid"].unique()
     for site_uuid in sites:
-
         # Check whether the site id exits in the table, otherwise return an error
         get_site_by_uuid(session=session, site_uuid=site_uuid)
 
@@ -72,9 +70,7 @@ def insert_forecast_values(
         written_rows.append(forecast)
 
         # Get all dataframe forecast value entries for current site_uuid
-        df_site: pd.DataFrame = forecast_values_df.loc[
-            forecast_values_df["site_uuid"] == site_uuid
-        ]
+        df_site: pd.DataFrame = forecast_values_df.loc[forecast_values_df["site_uuid"] == site_uuid]
 
         # Print a warning if there are duplicate target_times for this site's forecast
         if len(df_site["target_start_utc"].unique()) != len(df_site):

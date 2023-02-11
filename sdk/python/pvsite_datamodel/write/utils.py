@@ -7,7 +7,6 @@ from typing import Iterable, Optional, Union
 
 import pandas as pd
 import pandera as pa
-
 from pvsite_datamodel.sqlmodels import Base
 
 
@@ -32,9 +31,9 @@ class UUIDV4(pa.engines.pandas_engine.NpString):
     """
 
     def check(
-            self,
-            pandera_dtype: pa.dtypes.DataType,
-            data_container: Optional[pd.Series] = None,
+        self,
+        pandera_dtype: pa.dtypes.DataType,
+        data_container: Optional[pd.Series] = None,
     ) -> Union[bool, Iterable[bool]]:
         """Check validity of column and entries within."""
         # ensure that the data container's data type is a string,
