@@ -1,10 +1,11 @@
 """Generic DB rows writer."""
 
 import sqlalchemy as sa
-from pvsite_datamodel.sqlmodels import Base
-from pvsite_datamodel.write.utils import WrittenRow
 from sqlalchemy import orm as sa_orm
 from sqlalchemy.dialects import postgresql as sa_psql
+
+from pvsite_datamodel.sqlmodels import Base
+from pvsite_datamodel.write.utils import WrittenRow
 
 
 def upsert(session: sa_orm.Session, table: Base, rows: list[dict]) -> list[WrittenRow]:

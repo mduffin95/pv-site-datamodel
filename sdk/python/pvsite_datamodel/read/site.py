@@ -1,10 +1,11 @@
 """Functions for reading to pvsite db."""
 
 import logging
+from typing import List, Optional
+
+from sqlalchemy.orm import Session
 
 from pvsite_datamodel.sqlmodels import ClientSQL, SiteSQL
-from sqlalchemy.orm import Session
-from typing import List, Optional
 
 logger = logging.getLogger(__name__)
 

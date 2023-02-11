@@ -1,13 +1,14 @@
 """Cross-package functions."""
 
 import datetime as dt
+import typing
 import uuid
+from typing import Iterable, Optional, Union
 
 import pandas as pd
 import pandera as pa
-import typing
+
 from pvsite_datamodel.sqlmodels import Base
-from typing import Iterable, Optional, Union
 
 
 class WrittenRow(typing.NamedTuple):

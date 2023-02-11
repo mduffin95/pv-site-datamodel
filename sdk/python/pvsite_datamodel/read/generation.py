@@ -2,10 +2,12 @@
 import logging
 import uuid
 from datetime import datetime
-
-from pvsite_datamodel.sqlmodels import ClientSQL, DatetimeIntervalSQL, GenerationSQL, SiteSQL
-from sqlalchemy.orm import Session, contains_eager
 from typing import List, Optional
+
+from sqlalchemy.orm import Session, contains_eager
+
+from pvsite_datamodel.sqlmodels import (ClientSQL, DatetimeIntervalSQL,
+                                        GenerationSQL, SiteSQL)
 
 from .utils import filter_query_by_datetime_interval
 

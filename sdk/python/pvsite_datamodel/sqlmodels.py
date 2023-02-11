@@ -5,14 +5,15 @@ from __future__ import annotations
 # This means we can use Typing of objects that have jet to be defined
 import uuid
 from datetime import datetime
+from typing import List
 
 import sqlalchemy as sa
 from sqlalchemy import Column, DateTime
-from sqlalchemy.dialects.postgresql import FLOAT, INTEGER, REAL, TIMESTAMP, UUID
+from sqlalchemy.dialects.postgresql import (FLOAT, INTEGER, REAL, TIMESTAMP,
+                                            UUID)
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy.schema import UniqueConstraint
-from typing import List
 
 Base = declarative_base()
 
